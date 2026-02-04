@@ -13,7 +13,11 @@ import java.util.UUID;
 
 @Service
 public class ProdutoService {
-    static ProdutoRepository pr;
+    private final ProdutoRepository pr;
+
+    public ProdutoService(ProdutoRepository pr) {
+        this.pr = pr;
+    }
 
     public ProdutoDTO findById(UUID id){
         Produto p = pr.findById(id).orElseThrow(() -> new ResourceNotFoundException("PRODUCT NOT FOUND"));
